@@ -1,0 +1,5 @@
+-2|Lorenzo|Gori|lorenzogori@gmail.com|password|3345566756|0|1
+0|Maru|Sherif|maru@gmail.com|password|43234234|0|0
+1|Adnaan|Yuma|yuma@gmail.com|password|2312314|0|0
+2|marco|alessandri|marco@gmail.com|marco1M|+39 2234324342|0|0
+3|pietro|pippo|giovanni@gmail.com|Pollo23|3213123333|0|0

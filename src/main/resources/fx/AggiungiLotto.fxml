@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx.controllers.AggiungiLottoController">
+   <children>
+      <Button fx:id="aggiungiOggettoButton" layoutX="14.0" layoutY="361.0" mnemonicParsing="false" onAction="#inserisciOggettoAction" text="aggiungiOggetto" />
+      <TextField fx:id="nomeOggettoTextField" layoutX="14.0" layoutY="41.0" promptText="Nome oggetto" />
+      <TextArea fx:id="descrizioneOggettoArea" layoutX="14.0" layoutY="77.0" prefHeight="200.0" prefWidth="200.0" promptText="Inserisci una descrizione per l'oggetto (Opzionale)" />
+      <ChoiceBox fx:id="categoriaBox" layoutX="68.0" layoutY="291.0" prefWidth="150.0" />
+      <Label layoutX="11.0" layoutY="295.0" text="Categoria:" />
+      <TableView fx:id="tabellaOggetti" layoutX="285.0" prefHeight="164.0" prefWidth="315.0">
+        <columns>
+          <TableColumn fx:id="nomeOggettoColumn" prefWidth="162.0" text="Nome" />
+            <TableColumn fx:id="categoriaOggettoColumn" prefWidth="151.0" text="Categoria" />
+        </columns>
+      </TableView>
+      <Label fx:id="erroreNomeLabel" layoutX="172.0" layoutY="45.0" text="Inserisci un nome" textFill="RED" />
+      <Label fx:id="erroreCategoriaLabel" layoutX="226.0" layoutY="295.0" text="Inserisci una categoria" textFill="RED" />
+      <Label fx:id="max4Label" layoutX="129.0" layoutY="365.0" text="Massimo 4 oggetti per lotto" textFill="RED" />
+      <Button fx:id="fattoButton" layoutX="542.0" layoutY="361.0" mnemonicParsing="false" onAction="#aggiungiAction" text="Fatto" />
+      <Button fx:id="annullaButton" layoutX="473.0" layoutY="361.0" mnemonicParsing="false" onAction="#reset" text="Annulla" textFill="RED" />
+      <Button fx:id="rimuoviOggettoButton" layoutX="490.0" layoutY="165.0" mnemonicParsing="false" onAction="#rimuoviOggettoAction" text="RimuoviOggetto" textFill="RED" />
+      <Label fx:id="erroreInserimentoLabel" layoutX="443.0" layoutY="327.0" text="Errore durante l'inserimento" textFill="RED" />
+      <TextField fx:id="nomeLottoField" layoutX="443.0" layoutY="210.0" promptText="Nome lotto" />
+      <TextField fx:id="prezzoBaseField" layoutX="443.0" layoutY="235.0" promptText="Prezzo base" />
+      <TextField fx:id="rilancioMinimoField" layoutX="443.0" layoutY="260.0" promptText="Rilancio minimo" />
+      <Label fx:id="erroreNomeLottoLabel" layoutX="338.0" layoutY="214.0" text="Inserisci nome lotto" textFill="RED" />
+      <Label fx:id="errorePrezzoBaseLabel" layoutX="334.0" layoutY="239.0" text="Inserisci prezzo base" textFill="RED" />
+      <Label fx:id="erroreRilancioMinimoLabel" layoutX="315.0" layoutY="264.0" text="Inserisci rilancio minimo" textFill="RED" />
+   </children>
+</AnchorPane>
