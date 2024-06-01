@@ -31,5 +31,6 @@
       <Button fx:id="rilancioButton" layoutX="8.0" layoutY="238.0" mnemonicParsing="false" onAction="#rilancioAction" text="Effettua rilancio" />
       <TextField fx:id="rilancioField" layoutX="107.0" layoutY="238.0" prefHeight="25.0" prefWidth="134.0" promptText="Rilancio" />
       <Label fx:id="erroreRilancioLabel" layoutX="62.0" layoutY="263.0" text="Errore nel rilancio brutto coglione" textFill="RED" />
+      <Button fx:id="visualizzaButton" layoutX="241.0" layoutY="200.0" mnemonicParsing="false" onAction="#visualizzaAction" text="Visualizza lotto" />
    </children>
 </AnchorPane>

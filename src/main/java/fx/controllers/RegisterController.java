@@ -5,12 +5,20 @@ import java.io.IOException;
 import fx.App;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 public class RegisterController {
+
+    @FXML
+    private Text helpText;
 
     @FXML
     private Button annullaButton, registratiButton;
@@ -53,7 +61,7 @@ public class RegisterController {
         };
 
         String[] patterns = {
-            "^([A-Z]*[a-z]+)+$", "^([A-Z]*[a-z]+)+$", 
+            "^[A-Z][a-z]{2,}$", "^[A-Z][a-z]{2,}$", 
             "^[^.\\r\\n\\t\\f @()<>,;:\"]+\\.?[\\w]+\\@([a-z0-9]+-*[a-z0-9]+\\.)+[a-z-*]{2,6}$", 
             "^((?=\\S*?[A-Z])(?=\\S*?[a-z])(?=\\S*?[0-9]).{6,})\\S$", 
             "^([+][0-9]{2} )?[0-9]{10}$"
@@ -114,6 +122,15 @@ public class RegisterController {
         password2Field.clear();
     }
 
-    
+    @FXML
+    public void openHelp() throws IOException{
+        FXMLLoader loader = new FXMLLoader(App.class.getResource("InfoPage.fxml"));
+        Parent root = loader.load(); 
+        Scene scene = new Scene(root);    
+        Stage stage = new Stage();
+        stage.setTitle("Info");
+        stage.setScene(scene);        
+        stage.show();         
+    }
 
 }

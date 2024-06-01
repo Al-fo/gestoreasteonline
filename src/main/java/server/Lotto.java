@@ -84,6 +84,14 @@ public class Lotto implements Serializable{
         vincitoreAttuale = nominativo;
     }
 
+    public List<Oggetto> getOggetti(){
+        return oggettiCompresi;
+    }
+
+    public double getPrezzoBase(){
+        return prezzoBase;
+    }
+
     public String getVincitoreAttuale(){
         return vincitoreAttuale;
     }

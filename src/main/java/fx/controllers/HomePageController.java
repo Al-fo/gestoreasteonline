@@ -66,6 +66,9 @@ public class HomePageController {
     private Label erroreRilancioLabel;
 
     @FXML
+    private Button visualizzaButton;
+
+    @FXML
     public void initialize(){
         erroreDisconnessioneLabel.setVisible(false);
         lottiTable.setVisible(false);
@@ -73,6 +76,7 @@ public class HomePageController {
         rilancioButton.setVisible(false);
         erroreRilancioLabel.setVisible(false);
         rilancioField.setVisible(false);
+        visualizzaButton.setVisible(false);
 
         IDAstaColumn.setCellValueFactory(new PropertyValueFactory<Asta, Integer>("ID"));
         astaApertaColumn.setCellValueFactory(new PropertyValueFactory<Asta, Boolean>("aperta"));
@@ -139,6 +143,17 @@ public class HomePageController {
     }
 
     @FXML
+    public void visualizzaAction(){
+        if(lottiTable.getSelectionModel().getSelectedItem() != null){
+            VisualizzaLottoController.lottoDaVisualizzare = lottiTable.getSelectionModel().getSelectedItem();
+            try {
+                App.setRoot("VisualizzaLottoView");
+            } catch (IOException ignore) {
+            }
+        }
+    }
+
+    @FXML
     public void visualizza(){
         if(asteList.getSelectionModel().getSelectedItem() != null){
             Asta a = asteList.getSelectionModel().getSelectedItem();
@@ -149,6 +164,7 @@ public class HomePageController {
                 list = FXCollections.observableArrayList(a.getLotti());
                 System.out.println(list.toString());
             lottiTable.getItems().addAll(list);
+            visualizzaButton.visibleProperty().bind(new SimpleBooleanProperty(a.isAperta()));
             entraButton.visibleProperty().bind(new SimpleBooleanProperty(a.isAperta()));
             rilancioButton.visibleProperty().bind(new SimpleBooleanProperty(a.isAperta()));
             rilancioField.visibleProperty().bind(new SimpleBooleanProperty(a.isAperta()));

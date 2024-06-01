@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx.controllers.VisualizzaLottoController">
+   <children>
+      <TableView fx:id="oggettiTable" layoutX="242.0" prefHeight="400.0" prefWidth="358.0">
+        <columns>
+          <TableColumn fx:id="nomeOggettoColumn" prefWidth="91.0" text="Nome oggetto" />
+          <TableColumn fx:id="categoriaOggettoColumn" prefWidth="82.0" text="Categoria" />
+            <TableColumn fx:id="descrizioneOggettoColumn" prefWidth="184.0" text="Descrizione" />
+        </columns>
+      </TableView>
+      <Label fx:id="nomeLottoLabel" alignment="CENTER" layoutX="2.0" layoutY="6.0" prefHeight="71.0" prefWidth="239.0" text="Nome lotto">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="102.0" text="Valore attuale: " />
+      <Label fx:id="valoreLottoLabel" layoutX="108.0" layoutY="102.0" prefHeight="17.0" prefWidth="132.0" text="Label" />
+      <Label layoutX="8.0" layoutY="129.0" prefHeight="17.0" prefWidth="92.0" text="Vincitore attuale:" />
+      <Label fx:id="vincitoreLottoLabel" layoutX="108.0" layoutY="129.0" prefHeight="17.0" prefWidth="132.0" text="Label" />
+      <Label layoutX="6.0" layoutY="156.0" text="Indirizzo multicast: " />
+      <Label fx:id="indirizzoLottoLabel" layoutX="108.0" layoutY="156.0" prefHeight="17.0" prefWidth="132.0" text="Label" />
+      <Label layoutX="9.0" layoutY="183.0" text="Rilancio minimo: " />
+      <Label fx:id="rilancioLottoLabel" layoutX="108.0" layoutY="183.0" prefHeight="17.0" prefWidth="132.0" text="Label" />
+      <Label layoutX="10.0" layoutY="209.0" text="Prezzo base: " />
+      <Label fx:id="prezzoBaseLottoLabel" layoutX="108.0" layoutY="209.0" text="Label" />
+      <Button layoutX="14.0" layoutY="361.0" mnemonicParsing="false" onAction="#reset" text="Indietro" />
+   </children>
+</AnchorPane>

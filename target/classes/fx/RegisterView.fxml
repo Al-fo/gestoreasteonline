@@ -6,6 +6,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="475.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx.controllers.RegisterController">
    <children>
@@ -27,5 +28,6 @@
       <Label fx:id="passwordErrorLabel" layoutX="361.0" layoutY="312.0" text="Errore nella/e password" textFill="RED" />
       <Label fx:id="telefonoErrorLabel" layoutX="196.0" layoutY="363.0" text="Errore nel numero" textFill="RED" />
       <Label fx:id="erroreLabel" layoutX="564.0" layoutY="325.0" text="Utente già registrato / errore dal server" textFill="RED" />
+      <Text fx:id="helpText" fill="#0033ff" layoutX="551.0" layoutY="144.0" onMouseClicked="#openHelp" strokeType="OUTSIDE" strokeWidth="0.0" text="Non riesci ad' inserire le credenziali?" underline="true" />
    </children>
 </AnchorPane>

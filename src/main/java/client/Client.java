@@ -430,8 +430,16 @@ public class Client implements Runnable{
             reader.close();
             writer.close();
         } catch (IOException ignore) {
-        }
+        } catch(NullPointerException ignore){}
         System.exit(0);
+    }
+
+    public void die(){
+        try {
+            writer.writeBytes("-die\n");
+            stop();
+        } catch (IOException ignore) {
+        }
     }
 
 }

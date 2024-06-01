@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="563.0" prefWidth="836.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx.controllers.InfoController">
+   <children>
+      <Label alignment="CENTER" layoutX="14.0" layoutY="-4.0" prefHeight="37.0" prefWidth="101.0" text="Password:">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <Button layoutX="701.0" layoutY="524.0" mnemonicParsing="false" onAction="#showAreas" text="Non capisco i regex" />
+      <Label layoutX="26.0" layoutY="118.0" text="Email:">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <TextArea editable="false" layoutX="6.0" layoutY="149.0" prefHeight="62.0" prefWidth="589.0" text="La email deve matchare il seguente regex: &#10;^[^.\\r\\n\\t\\f @()&lt;&gt;,;:\&quot;]+\\.?[\\w]+\\@([a-z0-9]+-*[a-z0-9]+\\.)+[a-z-*]{2,6}$&#10;(buona fortuna)" />
+      <TextArea editable="false" layoutX="12.0" layoutY="27.0" prefHeight="48.0" prefWidth="526.0" text="La password deve matchare il seguente regex: &#10;((?=\\S*?[A-Z])(?=\\S*?[a-z])(?=\\S*?[0-9]).{6,})\\S$" />
+      <TextArea fx:id="emailArea" editable="false" layoutX="6.0" layoutY="211.0" prefHeight="95.0" prefWidth="589.0" text="Deve iniziare con una lettera o un numero,  &#10;dopo avere @ seguita da un nome di dominio (può avere più gradi) (es.gmail.com)&#10;NOTA: (un dominio ha massimo 6 caratteri)&#10;(la parte prima della @ può contenere punti)&#10;" visible="false" />
+      <TextArea fx:id="passwordArea" editable="false" layoutX="7.0" layoutY="75.0" prefHeight="38.0" prefWidth="537.0" text="Ovvero deve contenere almeno 6 lettere con almeno una maiuscola, una minuscola e un numero" visible="false" />
+      <TextArea editable="false" layoutX="6.0" layoutY="359.0" prefHeight="48.0" prefWidth="312.0" text="Nome e cognome devono matchare il seguente regex:&#10;^[A-Z][a-z]{2,}$" />
+      <TextArea fx:id="nomeArea" editable="false" layoutX="6.0" layoutY="407.0" prefHeight="86.0" prefWidth="392.0" text="Ovvero contenere almeno 3 lettere&#10;La prima deve essere maiuscola&#10;le lettere dopo la prima devono essere minuscole&#10;può contenere solo lettere da a-z (niente numeri, o caratteri speciali) " visible="false" />
+      <TextArea editable="false" layoutX="418.0" layoutY="359.0" prefHeight="48.0" prefWidth="326.0" text="Il numero di telefono deve matchare il seguente regex:&#10;^([+][0-9]{2} )?[0-9]{10}$" />
+      <TextArea fx:id="telArea" editable="false" layoutX="418.0" layoutY="407.0" prefHeight="48.0" prefWidth="402.0" text="Può iniziare con un prefisso di due cifre (es. +39) seguito da uno spazio&#10;dopodichè deve contenere 10 cifre consecutive " visible="false" />
+      <Label layoutX="14.0" layoutY="317.0" text="Nome/Cognome:">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <Label layoutX="418.0" layoutY="317.0" text="Numero di telefono:">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

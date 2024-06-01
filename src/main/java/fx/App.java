@@ -27,11 +27,11 @@ public class App extends Application {
         scene.getWindow().setWidth(780);
         scene.getWindow().setHeight(600);
         stage.setOnCloseRequest(event -> {
-            client.stop();
             try {
                 client.disconnetti();
             } catch (IOException ignore) {
             }
+            client.die();
         });
         
     }

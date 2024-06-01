@@ -9,6 +9,7 @@ module fx {
     opens fx.controllers to javafx.fxml, javafx.graphics;
     opens fx to javafx.fxml, javafx.graphics;
     exports client;
+    exports server;
     exports fx.controllers;
     exports fx;
 }

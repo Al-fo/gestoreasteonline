@@ -4,10 +4,9 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="475.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx.controllers.HomePageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="475.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx.controllers.AdminViewController">
    <children>
       <TableView fx:id="lottiTable" prefHeight="200.0" prefWidth="348.0">
         <columns>
@@ -17,7 +16,6 @@
             <TableColumn fx:id="IndirizzoLottoColumn" prefWidth="122.0" text="Indirizzo" />
         </columns>
       </TableView>
-      <Button fx:id="entraButton" layoutY="200.0" mnemonicParsing="false" text="Entra gruppo lotto" />
       <TableView fx:id="asteList" layoutX="348.0" onMouseClicked="#visualizza" prefHeight="475.0" prefWidth="432.0">
         <columns>
           <TableColumn minWidth="0.0" prefWidth="0.0" text="C2" />
@@ -26,11 +24,8 @@
         </columns>
       </TableView>
       <Button fx:id="logoutButton" layoutX="22.0" layoutY="436.0" mnemonicParsing="false" onAction="#logoutAction" text="Logout" textFill="RED" />
-      <Button fx:id="aggiungiButton" layoutX="255.0" layoutY="436.0" mnemonicParsing="false" onAction="#aggiungiAction" text="Aggiungi lotto" />
+      <Button fx:id="aggiungiButton" layoutX="255.0" layoutY="436.0" mnemonicParsing="false" onAction="#aggiungiAction" text="Aggiungi asta" />
       <Label fx:id="erroreDisconnessioneLabel" layoutX="22.0" layoutY="412.0" prefHeight="17.0" prefWidth="295.0" text="Label" textFill="RED" />
-      <Button fx:id="rilancioButton" layoutX="8.0" layoutY="238.0" mnemonicParsing="false" onAction="#rilancioAction" text="Effettua rilancio" />
-      <TextField fx:id="rilancioField" layoutX="107.0" layoutY="238.0" prefHeight="25.0" prefWidth="134.0" promptText="Rilancio" />
-      <Label fx:id="erroreRilancioLabel" layoutX="62.0" layoutY="263.0" text="Errore nel rilancio brutto coglione" textFill="RED" />
-      <Button fx:id="visualizzaButton" layoutX="241.0" layoutY="200.0" mnemonicParsing="false" onAction="#visualizzaAction" text="Visualizza lotto" />
+      <Button fx:id="chiudiAstaButton" layoutX="269.0" layoutY="400.0" mnemonicParsing="false" onAction="#chiudiAstaAction" text="Chiudi asta" textFill="RED" />
    </children>
 </AnchorPane>

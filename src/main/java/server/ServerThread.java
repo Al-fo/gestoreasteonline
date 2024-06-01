@@ -30,6 +30,7 @@ public class ServerThread extends Thread{
 
     @Override
     public void run() {
+        connesso:{
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
              DataOutputStream writer = new DataOutputStream(socket.getOutputStream())) {
                 while(true){
@@ -344,10 +345,15 @@ public class ServerThread extends Thread{
                             writer.writeBytes("[ER]Utente non trovato");
                             break switchcase;
                         }
+                        case "-die":{
+                            break connesso;
+                        }
                     }
                 }
         } catch (IOException ignore) {
         }
+        catch(Exception ignore){}
+    }
     }
 
     private ArrayList<Utente> leggiUtenti() throws IOException{
