@@ -418,7 +418,7 @@ public class Client implements Runnable{
             writer.writeBytes("-die\n");
             stop();
         } catch (IOException ignore) {
-        }
+        } catch(Exception ignore){}
     }
 
 }
