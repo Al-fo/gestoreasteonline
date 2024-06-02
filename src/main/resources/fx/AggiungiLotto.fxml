@@ -13,7 +13,7 @@
    <children>
       <Button fx:id="aggiungiOggettoButton" layoutX="14.0" layoutY="361.0" mnemonicParsing="false" onAction="#inserisciOggettoAction" text="aggiungiOggetto" />
       <TextField fx:id="nomeOggettoTextField" layoutX="14.0" layoutY="41.0" promptText="Nome oggetto" />
-      <TextArea fx:id="descrizioneOggettoArea" layoutX="14.0" layoutY="77.0" prefHeight="200.0" prefWidth="200.0" promptText="Inserisci una descrizione per l'oggetto (Opzionale)" />
+      <TextArea fx:id="descrizioneOggettoArea" layoutX="14.0" layoutY="77.0" prefHeight="200.0" prefWidth="200.0" promptText="Inserisci una descrizione per l'oggetto " />
       <ChoiceBox fx:id="categoriaBox" layoutX="68.0" layoutY="291.0" prefWidth="150.0" />
       <Label layoutX="11.0" layoutY="295.0" text="Categoria:" />
       <TableView fx:id="tabellaOggetti" layoutX="285.0" prefHeight="164.0" prefWidth="315.0">
@@ -35,5 +35,6 @@
       <Label fx:id="erroreNomeLottoLabel" layoutX="338.0" layoutY="214.0" text="Inserisci nome lotto" textFill="RED" />
       <Label fx:id="errorePrezzoBaseLabel" layoutX="334.0" layoutY="239.0" text="Inserisci prezzo base" textFill="RED" />
       <Label fx:id="erroreRilancioMinimoLabel" layoutX="315.0" layoutY="264.0" text="Inserisci rilancio minimo" textFill="RED" />
+      <Label fx:id="erroreDescrizioneLabel" layoutX="221.0" layoutY="182.0" text="Inserisci una descrizione" textFill="RED" />
    </children>
 </AnchorPane>

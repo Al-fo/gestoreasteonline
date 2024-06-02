@@ -60,6 +60,9 @@ public class HomePageController {
     private TextField rilancioField;
 
     @FXML
+    private Button esciButton;
+
+    @FXML
     private Label erroreDisconnessioneLabel;
 
     @FXML
@@ -77,6 +80,7 @@ public class HomePageController {
         erroreRilancioLabel.setVisible(false);
         rilancioField.setVisible(false);
         visualizzaButton.setVisible(false);
+        esciButton.setVisible(false);
 
         IDAstaColumn.setCellValueFactory(new PropertyValueFactory<Asta, Integer>("ID"));
         astaApertaColumn.setCellValueFactory(new PropertyValueFactory<Asta, Boolean>("aperta"));
@@ -166,8 +170,23 @@ public class HomePageController {
             lottiTable.getItems().addAll(list);
             visualizzaButton.visibleProperty().bind(new SimpleBooleanProperty(a.isAperta()));
             entraButton.visibleProperty().bind(new SimpleBooleanProperty(a.isAperta()));
+            esciButton.visibleProperty().bind(new SimpleBooleanProperty(a.isAperta()));
             rilancioButton.visibleProperty().bind(new SimpleBooleanProperty(a.isAperta()));
             rilancioField.visibleProperty().bind(new SimpleBooleanProperty(a.isAperta()));
+        }
+    }
+
+    @FXML
+    public void esciAction(){
+        erroreDisconnessioneLabel.setVisible(false);
+        Lotto l = lottiTable.getSelectionModel().getSelectedItem();
+        if(l != null){
+            try {
+                App.client.esciGruppo(l.getIndirizzoMulticast().toString().substring(1));
+            } catch (IOException e) {
+                erroreDisconnessioneLabel.setVisible(true);
+                erroreDisconnessioneLabel.setText("Non fai parte del gruppo");
+            }
         }
     }
 
@@ -186,6 +205,7 @@ public class HomePageController {
     
     @FXML
     public void entraAction(){
+        erroreDisconnessioneLabel.setVisible(false);
         if(lottiTable.getSelectionModel().getSelectedItem() != null){
             Lotto l = lottiTable.getSelectionModel().getSelectedItem();
             try {

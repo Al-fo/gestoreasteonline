@@ -33,6 +33,9 @@ public class AggiungiLottoController {
     private TextField rilancioMinimoField;
 
     @FXML
+    private Label erroreDescrizioneLabel;
+
+    @FXML
     private Label erroreNomeLottoLabel;
 
     @FXML
@@ -135,13 +138,31 @@ public class AggiungiLottoController {
             errorePrezzoBaseLabel.setVisible(true);
             aggiungi = false;
         }
+        if(listaOggetti.size() == 0){
+            erroreInserimentoLabel.setVisible(true);
+            erroreInserimentoLabel.setText("Inserisci almeno un oggetto");
+            aggiungi = false;
+        }
         int[] categorie = new int[listaOggetti.size()];
         String[] nomi = new String[listaOggetti.size()];
         String[] descrizioni = new String[listaOggetti.size()];
 
         String nomeLotto = nomeLottoField.getText();
-        double prezzoBase = Double.parseDouble(prezzoBaseField.getText());
-        double rilancioMinimo = Double.parseDouble(rilancioMinimoField.getText());
+        double prezzoBase = 0;
+        try{    
+            prezzoBase = Double.parseDouble(prezzoBaseField.getText());
+        }catch(Exception e){
+            errorePrezzoBaseLabel.setVisible(true);
+            aggiungi = false;
+        }
+        double rilancioMinimo = 0;
+        try{
+           rilancioMinimo = Double.parseDouble(rilancioMinimoField.getText());
+        }catch(Exception e){
+            erroreRilancioMinimoLabel.setVisible(true);
+            aggiungi = false;
+        }
+        
 
         for(int i = 0; i < listaOggetti.size(); i++){
             categorie[i] = listaOggetti.get(i).getCategoriaValue();
@@ -156,6 +177,7 @@ public class AggiungiLottoController {
                 switch(e.getMessage()){
                     case "Errore": case "Non connesso":
                         erroreInserimentoLabel.setVisible(true);
+                        erroreInserimentoLabel.setText("Errore");
                         break;
                     case "Categoria":
                         erroreCategoriaLabel.setVisible(true);
@@ -168,6 +190,8 @@ public class AggiungiLottoController {
                         break;
                     default: break;
                 }
+            }catch(Exception e){
+                e.printStackTrace();
             }
     }
 
@@ -178,12 +202,12 @@ public class AggiungiLottoController {
         String nome = nomeOggettoTextField.getText();
         String descrizione = descrizioneOggettoArea.getText();
         int categoria = categoriaBox.getSelectionModel().getSelectedIndex();
-        if(nome == null){
+        if(nome == "" || nome == null){
             erroreNomeLabel.setVisible(true);
             inserisci = false;
         }
-        if(descrizione == null){
-            erroreNomeLabel.setVisible(true);
+        if(descrizione == "" || descrizione == null){
+            erroreDescrizioneLabel.setVisible(true);
             inserisci = false;  
         }
         if(categoria == -1){
@@ -233,6 +257,7 @@ public class AggiungiLottoController {
         erroreNomeLottoLabel.setVisible(false);
         errorePrezzoBaseLabel.setVisible(false);
         erroreRilancioMinimoLabel.setVisible(false);
+        erroreDescrizioneLabel.setVisible(false);
     }
 
     private void refresh(){

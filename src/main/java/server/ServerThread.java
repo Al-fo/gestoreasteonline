@@ -216,11 +216,14 @@ public class ServerThread extends Thread{
 
                                     for(int i = 0; i < quantitaOggetti; i++){
                                         ricevuto = reader.readLine();
+                                        System.out.println(ricevuto);
                                         int categoria = Integer.parseInt(ricevuto.split("\\|")[0]);
                                         String nome = ricevuto.split("\\|")[1];
                                         String desc = ricevuto.split("\\|")[2];
+                                        System.out.println(desc);
                                         try{
                                             oggetti[i] = new Oggetto(categoria, nome, desc);
+                                            System.out.println(oggetti[i].toString());
                                         }catch(IOException e){
                                             writer.writeBytes("[ER]Categoria non valida\n");
                                             break switchcase;
