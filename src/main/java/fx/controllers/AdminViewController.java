@@ -112,12 +112,10 @@ public class AdminViewController {
     public void visualizza(){
         if(asteList.getSelectionModel().getSelectedItem() != null){
             Asta a = asteList.getSelectionModel().getSelectedItem();
-            System.out.println(a.toString());
             lottiTable.setVisible(true);
             lottiTable.getItems().clear();
             ObservableList<Lotto> list;
                 list = FXCollections.observableArrayList(a.getLotti());
-                System.out.println(list.toString());
             lottiTable.getItems().addAll(list);
         }
     }

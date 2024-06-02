@@ -17,7 +17,7 @@
             <TableColumn fx:id="IndirizzoLottoColumn" prefWidth="122.0" text="Indirizzo" />
         </columns>
       </TableView>
-      <Button fx:id="entraButton" layoutY="200.0" mnemonicParsing="false" text="Entra gruppo lotto" />
+      <Button fx:id="entraButton" layoutY="200.0" mnemonicParsing="false" onAction="#entraAction" text="Entra gruppo lotto" />
       <TableView fx:id="asteList" layoutX="348.0" onMouseClicked="#visualizza" prefHeight="475.0" prefWidth="432.0">
         <columns>
           <TableColumn minWidth="0.0" prefWidth="0.0" text="C2" />

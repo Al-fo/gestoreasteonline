@@ -7,12 +7,16 @@ import java.net.MulticastSocket;
 import java.net.UnknownHostException;
 
 public class ThreadMulticast extends Thread{
+
+    private String nomeLotto;
     private InetAddress indirizzo;
     private static final int porta = 3200;
     private MulticastSocket socket;
 
-    public ThreadMulticast(String indirizzo) throws UnknownHostException{
+
+    public ThreadMulticast(String indirizzo, String nomeLotto) throws UnknownHostException{
         this.indirizzo = InetAddress.getByName(indirizzo);
+        this.nomeLotto = nomeLotto;
     }
 
     @Override
@@ -25,7 +29,7 @@ public class ThreadMulticast extends Thread{
                 DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
                 socket.receive(packet);
                 String msg = new String(packet.getData());
-                System.out.println("Messaggio da " + indirizzo.toString() + ": " + msg);
+                System.out.println("Messaggio da parte di " + nomeLotto + ": " + msg);
             }
         }
         catch (IOException e) {

@@ -210,7 +210,6 @@ public class GestoreAste implements Serializable{
                         for(Object o : a){
                             if(o instanceof Asta)
                                 aste.add((Asta) o);
-                                System.out.println("Asta aggiunta " + o.toString());
                         }
                     }
                 }

@@ -32,7 +32,6 @@ public class LoginController {
     public void accediAction(){
         String email = userField.getText();
         String password = passField.getText();
-        System.out.println(email + password);
         try {
             App.client.admin(App.client.accedi(email, password));
             erroreLabel.setVisible(false);

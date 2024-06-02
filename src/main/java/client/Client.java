@@ -46,11 +46,9 @@ public class Client implements Runnable{
                 int scelta = 0;
                 connessione: while(true){
                     while(!loggedIn && scelta >= 0 && scelta <= 1){
-                        System.out.println("0: Registrati\n1: Login\n2: Esci");
                         try{
                             scelta = scanner.nextInt();
                         }catch(InputMismatchException e){
-                            System.out.println("Errore: Valore inserito errato");
                             scelta = 43829402;
                         }
                         scanner.nextLine();
@@ -74,15 +72,12 @@ public class Client implements Runnable{
                     if(admin){
                         while(loggedIn){
                             if(id == -1){
-                                System.out.println("Errore, riprovare il login");
                                 admin = false;
                                 scelta = 0;
                             }else{
-                                System.out.println("0: Logout\n1: Richiedi lista aste\n" + "2: Crea asta\n" + "3: Chiudi asta");
                                 try{
                                     scelta = scanner.nextInt();
                                 }catch(InputMismatchException e){
-                                    System.out.println("Errore: Valore inserito errato");
                                     scelta = 432482;
                                 }
                                 scanner.nextLine();
@@ -110,15 +105,11 @@ public class Client implements Runnable{
                     }else{
                         while(loggedIn){
                             if(id == -1){
-                                System.out.println("Errore, riprovare il login");
                                 scelta = 0;
                             }else{
-                                System.out.println("0: Logout\n1: Richiedi lista aste\n2: Inserisci lotto\n" + 
-                                "3: Entra gruppo lotto\n4: Esci gruppo lotto\n5: Effettua rilancio");
                                 try{
                                     scelta = scanner.nextInt();
                                 }catch(InputMismatchException e){
-                                    System.out.println("Errore: Valore inserito errato");
                                     scelta = 3129;
                                 }
                                 scanner.nextLine();
@@ -183,29 +174,23 @@ public class Client implements Runnable{
     }
 
     public boolean accedi(String email, String password) throws IOException{
-        System.out.println("Inserisci email, password");
         writer.writeBytes("-Login|" + email + "|" + password + "\n");
         String risposta;
         risposta = reader.readLine();
         if(risposta.contains("[OK]") || risposta.contains("[AD]")){
             id = Integer.parseInt(risposta.substring(4));
-            System.out.println("Login avvenuto con successo");
             loggedIn = true;
             if(risposta.contains("[AD]")){
-                System.out.println("Account admin attivo");
                 admin = true;
             } 
             return admin;
         }else{
             switch(risposta.substring(4).trim()){
                 case "Dati":
-                    System.out.println("Dati");
                     throw new IOException("Dati");
                 case "Connected":
-                    System.out.println("Connected");
                     throw new IOException("Connected");
                 default:
-                    System.out.println("Pipo");
                     throw new IOException("Errore, si prega di riprovare");
             }
         }
@@ -216,7 +201,6 @@ public class Client implements Runnable{
             writer.writeBytes("-Logout|" + id + "\n");
             String risposta = reader.readLine();
             if(risposta.contains("[OK]")){
-                System.out.println("Logout avvenuto con successo");
                 admin = false;
             }else{
                 switch (risposta.substring(4)) {
@@ -258,19 +242,15 @@ public class Client implements Runnable{
         String risposta;
         risposta = reader.readLine();
         if(risposta.contains("[OK]")){
-            System.out.println("Asta creata con successo");
         }else{
             switch(risposta.substring(4)){
                 case "NoAdmin":
-                    System.out.println("Errore, account non admin");
                     id = -1;
                     break;
                 case "Non connesso":
-                    System.out.println("Utente non connesso, riprovare");
                     id = -1;
                     break;
                 default:
-                    System.out.println("Errore, riprovare");
             }
         }
     }
@@ -283,7 +263,6 @@ public class Client implements Runnable{
             writer.writeBytes(idAsta + "\n");
             risposta = reader.readLine();
             if(risposta.contains("[OK]")){
-                System.out.println("Asta chiusa con successo");
                 return;
             }else{
                 switch (risposta.substring(4)) {
@@ -361,19 +340,21 @@ public class Client implements Runnable{
         }
     }
 
-    public void entraGruppo(String indirizzo) throws IOException{
+    public ThreadMulticast entraGruppo(String indirizzo, String nomeLotto) throws IOException{
+        ThreadMulticast thread;
         try{
             for(ThreadMulticast t: threadPool){
                 if(t.getIndirizzo().toString().contains(indirizzo)){
                     throw new IOException("Fai già parte del gruppo");
                 }
             }
-            ThreadMulticast thread = new ThreadMulticast(indirizzo);
+            thread = new ThreadMulticast(indirizzo, nomeLotto);
             thread.start();
             threadPool.add(thread);
         }catch(UnknownHostException e){
-            throw new IOException("Indirizzo non valido");
+            throw new IOException("Indirizzo");
         }
+        return thread;
     }
 
     public void esciGruppo(String indirizzo) throws IOException{
@@ -397,12 +378,10 @@ public class Client implements Runnable{
             writer.writeBytes(idLotto + "|" + idAsta + "|" + rilancio + "\n");
             risposta = reader.readLine();
             if(risposta.contains("[OK]")){
-                System.out.println("Rilancio efettuato con successo");
                 return;
             }else{
                 switch(risposta.substring(4)){
                     case "Rilancio":
-                        System.out.println("pipo");
                         throw new IOException("Rilancio");
                     case "AstaLotto":
                         throw new IOException("Asta");

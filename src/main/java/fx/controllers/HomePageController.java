@@ -108,8 +108,7 @@ public class HomePageController {
         if(lottiTable.getSelectionModel().getSelectedItem() != null){
             Lotto l = lottiTable.getSelectionModel().getSelectedItem();
             Asta a = asteList.getSelectionModel().getSelectedItem();
-            if(a == null) System.out.println("Pipo");
-            else{
+            if(a != null){
                 double rilancio = 0;
                 try{
                    rilancio = Double.parseDouble(rilancioField.getText());
@@ -157,12 +156,13 @@ public class HomePageController {
     public void visualizza(){
         if(asteList.getSelectionModel().getSelectedItem() != null){
             Asta a = asteList.getSelectionModel().getSelectedItem();
-            System.out.println(a.toString());
+            int i = asteList.getSelectionModel().getSelectedIndex();
+            refreshAste();
+            asteList.getSelectionModel().select(i);
             lottiTable.setVisible(true);
             lottiTable.getItems().clear();
             ObservableList<Lotto> list;
                 list = FXCollections.observableArrayList(a.getLotti());
-                System.out.println(list.toString());
             lottiTable.getItems().addAll(list);
             visualizzaButton.visibleProperty().bind(new SimpleBooleanProperty(a.isAperta()));
             entraButton.visibleProperty().bind(new SimpleBooleanProperty(a.isAperta()));
@@ -181,8 +181,22 @@ public class HomePageController {
             erroreDisconnessioneLabel.setVisible(true);
             erroreDisconnessioneLabel.setText("Errore durante la disconnessione");
         }
-        
     }
+
+    
+    @FXML
+    public void entraAction(){
+        if(lottiTable.getSelectionModel().getSelectedItem() != null){
+            Lotto l = lottiTable.getSelectionModel().getSelectedItem();
+            try {
+                App.client.entraGruppo(l.getIndirizzoMulticast().toString().substring(1), l.getNomeLotto());
+            } catch (IOException e) {
+                erroreDisconnessioneLabel.setVisible(true);
+                erroreDisconnessioneLabel.setText("Fai già parte del gruppo");
+            }
+        }
+    }
+    
     
     @FXML
     public void aggiungiAction() throws IOException{

@@ -135,7 +135,6 @@ public class AggiungiLottoController {
             errorePrezzoBaseLabel.setVisible(true);
             aggiungi = false;
         }
-        System.out.println(nomeLottoField.getText() + "-" + rilancioMinimoField.getText() + "-" + prezzoBaseField.getText());
         int[] categorie = new int[listaOggetti.size()];
         String[] nomi = new String[listaOggetti.size()];
         String[] descrizioni = new String[listaOggetti.size()];
@@ -162,13 +161,10 @@ public class AggiungiLottoController {
                         erroreCategoriaLabel.setVisible(true);
                         break;
                     case "Troppi":
-                        System.out.println(e.getMessage());
                         break;
                     case "Id":
-                        System.out.println(e.getMessage());
                         break;
                     case "Asta":
-                        System.out.println(e.getMessage());
                         break;
                     default: break;
                 }
@@ -182,7 +178,6 @@ public class AggiungiLottoController {
         String nome = nomeOggettoTextField.getText();
         String descrizione = descrizioneOggettoArea.getText();
         int categoria = categoriaBox.getSelectionModel().getSelectedIndex();
-        System.out.println(categoria);
         if(nome == null){
             erroreNomeLabel.setVisible(true);
             inserisci = false;
